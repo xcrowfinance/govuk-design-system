@@ -15,6 +15,7 @@ import Copy from './components/copy.mjs'
 import Example from './components/example.mjs'
 import Navigation from './components/navigation.mjs'
 import OptionsTable from './components/options-table.mjs'
+import ScrollContainer from './components/scroll-container.mjs'
 import Search from './components/search.mjs'
 import AppTabs from './components/tabs.mjs'
 
@@ -57,13 +58,23 @@ $tabs.forEach(($tabs) => {
 new OptionsTable()
 
 // Add copy to clipboard to code blocks inside tab containers
-const $codeBlocks = document.querySelectorAll('[data-module="app-copy"] pre')
-$codeBlocks.forEach(($codeBlock) => {
+const $copyCodeBlocks = document.querySelectorAll(
+  '[data-module="app-copy"] pre'
+)
+$copyCodeBlocks.forEach(($codeBlock) => {
   new Copy($codeBlock)
 })
 
 // Initialise mobile navigation
 new Navigation(document)
+
+// Add some responsive behaviours to scrollable containers
+const $scrollContainer = document.querySelectorAll(
+  '[data-module="app-scroll-container"]'
+)
+$scrollContainer.forEach(($container) => {
+  new ScrollContainer($container)
+})
 
 // Initialise search
 const $searchContainer = document.querySelector('[data-module="app-search"]')
